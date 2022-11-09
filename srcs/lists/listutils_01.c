@@ -6,14 +6,14 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:44:02 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/07 17:19:34 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:15:31 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lists.h"
 
 // Create a new node and return pointer to new obj.
-t_list	*createnode(int data, char *path, char **cmd)
+t_list	*createnode(char *path, char **cmd)
 {
 	t_list	*objs;
 

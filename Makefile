@@ -1,4 +1,6 @@
 SRCS = $(SRCS_DIR)/main.c \
+	$(SRCS_DIR)/parse.c \
+	$(SRCS_DIR)/utils/utils_01.c \
 	$(SRCS_DIR)/lists/listutils_01.c \
 	$(SRCS_DIR)/lists/listutils_02.c \
 
@@ -10,7 +12,7 @@ OBJS_DIR = objs
 
 FLAGS = -g -Wextra -Wall -Werror -fsanitize=address
 CC = gcc
-RM = rm -fr
+RM = rm -rf
 NAME = pipex
 
 all: $(NAME)
@@ -22,10 +24,11 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 		mkdir -p $(@D)
 		$(CC) $(FLAGS) -c $< -o $@
 
-clean: $(RM) $(NAME)
+clean:
+		$(RM) $(OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) $(OBJS_DIR)
 
 re:	fclean all
 

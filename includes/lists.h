@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:19:20 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/07 17:01:50 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:15:24 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct s_list
 	t_list	*next;
 };
 
-t_list	*createnode(int data, char *path, char **cmd);
+t_list	*createnode(char *path, char **cmd);
 t_list	*addtolast(t_list **list, t_list *new);
 t_list	*addtostart(t_list **list, t_list *new);
 void	rmlist(t_list **list);
