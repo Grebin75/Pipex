@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:50:11 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/09 17:10:18 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:05:02 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include "./lists.h"
+# include "../printf/ft_printf.h"
 
 typedef struct s_prog	t_prog;
 typedef struct s_cmd	t_cmd;
@@ -37,4 +39,5 @@ char	*strjoin(char *s1, char *s2);
 char	**ft_split(char *s);
 t_prog	*this(void);
 void	parse(char **env, char **argv);
+void	printerror(char *s, int status);
 #endif

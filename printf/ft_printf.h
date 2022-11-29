@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lists.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 12:19:20 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/21 17:08:11 by hcoutinh         ###   ########.fr       */
+/*   Created: 2022/03/14 14:41:13 by hcoutinh          #+#    #+#             */
+/*   Updated: 2022/03/18 16:18:47 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LISTS_H
-# define LISTS_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
+# include <stdarg.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
 
-typedef struct s_list	t_list;
-
-struct s_list
-{
-	char	*path;
-	char	**cmd;
-	t_list	*next;
-};
-
-t_list	*createnode(char **cmd);
-t_list	*addtolast(t_list **list, t_list *new);
-t_list	*addtostart(t_list **list, t_list *new);
-void	rmlist(t_list **list);
-void	rmnode(t_list **list);
-
-t_list	*selectnode(t_list *list, int n);
-int		listsize(t_list *list);
-t_list	*listcall(void);
+int	ft_putchar(char h);
+int	ft_putstr(char *s);
+int	ft_putnbr(int n);
+int	ft_point(unsigned long long n);
+int	ft_unputnbr(unsigned int n);
+int	ft_up(unsigned int n);
+int	ft_low(unsigned int n);
+int	ft_printf(const char *s, ...);
 
 #endif

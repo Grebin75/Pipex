@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:49:55 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/09 17:19:25 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:25:30 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,33 @@ int	len(char *str)
 	return (i);
 }
 
+char	*ft_getline(int count, char *s)
+{
+	char	*line;
+	int		i;
+
+	line = malloc(sizeof(char) * (count + 1));
+	if (!line)
+		printerror("Malloc error", 1);
+	line[count] = 0;
+	i = -1;
+	while (i++ < count - 1)
+		line[i] = s[i];
+	return (line);
+}
+
 char	**ft_split(char *s)
 {
 	char	**cmd;
 	char	*line;
 	int		count;
-	int		i;
 	int		j;
 
 	j = -1;
 	count = wordcount(s);
 	cmd = malloc(sizeof(char *) * (count + 1));
+	if (!cmd)
+		printerror("Malloc error", 1);
 	while (*s)
 	{
 		while (*s == 32)
@@ -58,14 +74,11 @@ char	**ft_split(char *s)
 		if (!*s)
 			break ;
 		count = len(s);
-		line = malloc(sizeof(char) * (count + 1));
-		line[count] = 0;
-		i = -1;
-		while (i++ < count - 1)
-			line[i] = s[i];
+		line = ft_getline(count, s);
 		s += count;
 		cmd[++j] = line;
 	}
+	cmd[++j] = NULL;
 	return (cmd);
 }
 
@@ -82,8 +95,8 @@ char	*strjoin(char *s1, char *s2)
 	k = -1;
 	i += len(s1) + len(s2);
 	s3 = malloc(sizeof(char) * (i + 2));
-	/* if (!s3)
-		printerror("Malloc error", 1); */
+	if (!s3)
+		printerror("Malloc error", 1);
 	while (s1[++j] && j < len(s1))
 		s3[++k] = s1[j];
 	s3[++k] = '/';

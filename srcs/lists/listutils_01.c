@@ -6,21 +6,21 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:44:02 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/09 12:15:31 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/23 13:14:20 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lists.h"
 
 // Create a new node and return pointer to new obj.
-t_list	*createnode(char *path, char **cmd)
+t_list	*createnode(char **cmd)
 {
 	t_list	*objs;
 
 	objs = malloc(sizeof(t_list));
 	if (!objs)
 		return (NULL);
-	objs->path = path;
+	objs->path = NULL;
 	objs->cmd = cmd;
 	objs->next = NULL;
 	return (objs);
@@ -60,21 +60,19 @@ t_list	*addtolast(t_list **list, t_list *new)
 }
 
 // Remove a node on a specific position.
-void	rmnode(t_list **list, int n)
+void	rmnode(t_list **list)
 {
 	t_list	*temp;
 	int		i;
 
-	i = -1;
-	temp = selectnode(*list, n);
+	temp = selectnode(*list, 0);
 	if (!temp)
 		return ;
-	if (n > 0)
-		(selectnode(*list, n - 1))->next = selectnode(*list, n + 1);
-	if (n == 0)
-		(*list) = (*list)->next;
+	(*list) = (*list)->next;
+	i = -1;
 	if (temp->cmd)
 	{
+		//printf("%s\n", temp->cmd[++i]);
 		while (temp->cmd[++i])
 			free(temp->cmd[i]);
 		free(temp->cmd);
@@ -89,5 +87,5 @@ void	rmnode(t_list **list, int n)
 void	rmlist(t_list **list)
 {
 	while (list)
-		rmnode(list, 0);
+		rmnode(list);
 }

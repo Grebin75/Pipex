@@ -14,11 +14,13 @@ FLAGS = -g -Wextra -Wall -Werror -fsanitize=address
 CC = gcc
 RM = rm -rf
 NAME = pipex
+PRINTF		= printf/libftprintf.a
+
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+		$(CC) $(FLAGS) $(OBJS) -Lprintf -lftprintf -o $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 		mkdir -p $(@D)
@@ -26,9 +28,11 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 		$(RM) $(OBJS)
+		make clean -C printf
 
 fclean: clean
 		$(RM) $(NAME) $(OBJS_DIR)
+		make fclean -C printf
 
 re:	fclean all
 

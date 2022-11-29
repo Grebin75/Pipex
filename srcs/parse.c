@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:03:05 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/09 17:32:23 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:24:19 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	setcmd(char *argv, char *path)
 	t_list	*node;
 
 	cmd = ft_split(argv);
-	node = addtolast((t_list **)&this()->cmd ,createnode(cmd[0], cmd));
-	while (path)
+	node = addtolast((t_list **)&this()->cmd ,createnode(cmd));
+	while (*path)
 	{
 		temp = strjoin(path, node->cmd[0]);
 		if (access(temp, F_OK) != -1)
@@ -31,8 +31,8 @@ void	setcmd(char *argv, char *path)
 		free(temp);
 		path += len(path) + (path[len(path)] == ':');
 	}
-	/* if (!this()->cmd->path)
-		printerror("Command not found", 1); */
+	if (!this()->cmd->path)
+		printerror("Command not found.", 1);
 }
 
 char	*findpath(char *env, char *str)
@@ -55,14 +55,22 @@ void	parse(char **env, char **argv)
 	char	*path;
 	int		i;
 
-	path = NULL;
-	while (!path)
-		path = findpath(env[++i], "PATH=");
-	printf("%s\n", path);
 	i = -1;
+	path = NULL;
+	while (env[++i])
+	{
+		path = findpath(env[i], "PATH=");
+		if (path)
+			break;
+	}
+	if (!path)
+		printerror("Path not found", 1);
 	setcmd(argv[2], path);
-	printf("%s\n", path);
+	this()->infile = open(argv[1], O_RDONLY);
+	if (this()->infile == -1)
+		printerror("Invalid infile", 1);
 	setcmd(argv[3], path);
-	printf("1: %s\n", this()->cmd->path);
-	printf("2: %s\n", this()->cmd->next->path);
+	this()->outfile = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
+	if (this()->outfile == -1)
+		printerror("Invalid infile", 1);
 }
