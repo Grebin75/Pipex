@@ -29,13 +29,15 @@ WHITE = \033[0;97m
 all: $(NAME)
 
 $(NAME): $(OBJS) $(PRINTF)
+		@echo
 		@echo "$(CYAN)  _____ _____ _____  ________   __"
 		@echo " |  __ \_   _|  __ \|  ____\ \ / /"
 		@echo " | |__) || | | |__) | |__   \ V / "
 		@echo " |  ___/ | | |  ___/|  __|   > <  "
 		@echo " | |    _| |_| |    | |____ / . \ "
 		@echo " |_|   |_____|_|    |______/_/ \_\ "
-		@echo "                                  $(DEFAULT)"
+		@echo
+		@echo
 		@$(CC) $(FLAGS) $(OBJS) -Lprintf -lftprintf -o $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -46,12 +48,13 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 $(PRINTF):
 		@echo -n "$(YELLOW)"
+		@echo "\nPRINTF:"
 		@make --no-print-directory -C printf
 		@echo -n "$(DEFAULT)"
 
 clean:
 		@$(RM) $(OBJS_DIR)
-		@echo "$(CYAN) Cleaning Objects...$(DEFAULT)"
+		@echo "$(CYAN)Cleaning Objects...$(DEFAULT)"
 		@make --no-print-directory clean -C printf
 fclean: clean
 		@$(RM) $(NAME)
