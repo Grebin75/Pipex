@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:50:11 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/29 15:05:02 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:41:19 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 # include "./lists.h"
 # include "../printf/ft_printf.h"
 
@@ -34,7 +35,8 @@ struct	s_cmd{
 	t_cmd	*next;
 } ;
 
-int	len(char *str);
+void	forks(char **env, int infile, int outfile);
+int		len(char *str);
 char	*strjoin(char *s1, char *s2);
 char	**ft_split(char *s);
 t_prog	*this(void);

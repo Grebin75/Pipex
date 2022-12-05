@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:44:02 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/23 13:14:20 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:31:07 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_list	*addtolast(t_list **list, t_list *new)
 	}
 	else
 		*list = new;
-	return (temp);
+	return (new);
 }
 
 // Remove a node on a specific position.
@@ -72,7 +72,6 @@ void	rmnode(t_list **list)
 	i = -1;
 	if (temp->cmd)
 	{
-		//printf("%s\n", temp->cmd[++i]);
 		while (temp->cmd[++i])
 			free(temp->cmd[i]);
 		free(temp->cmd);
@@ -86,6 +85,6 @@ void	rmnode(t_list **list)
 // Remove list.
 void	rmlist(t_list **list)
 {
-	while (list)
+	while (*list)
 		rmnode(list);
 }

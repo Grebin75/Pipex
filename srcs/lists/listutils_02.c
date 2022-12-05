@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:13:43 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/07 16:40:00 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:30:55 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ t_list	*selectnode(t_list *list, int n)
 	while (temp && n--)
 		temp = temp->next;
 	return (temp);
+}
+
+void	printlist(t_list *list)
+{
+	int	i;
+
+	while (list)
+	{
+		printf("PATH: %s\n", list->path);
+		i = -1;
+		while (list->cmd[++i])
+			printf("CMD[%i]: %s\n", i, list->cmd[i]);
+		list = list->next;
+	}
 }
 
 // Return list address

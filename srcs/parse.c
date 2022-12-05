@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:03:05 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/29 15:24:19 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:00:07 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void	setcmd(char *argv, char *path)
 	t_list	*node;
 
 	cmd = ft_split(argv);
-	node = addtolast((t_list **)&this()->cmd ,createnode(cmd));
+	if (!cmd)
+		printerror("Malloc error", 1);
+	node = addtolast((t_list **)&this()->cmd, createnode(cmd));
+	if (!node)
+		printerror("Malloc error", 1);
 	while (*path)
 	{
 		temp = strjoin(path, node->cmd[0]);
@@ -31,7 +35,7 @@ void	setcmd(char *argv, char *path)
 		free(temp);
 		path += len(path) + (path[len(path)] == ':');
 	}
-	if (!this()->cmd->path)
+	if (!node->path)
 		printerror("Command not found.", 1);
 }
 
@@ -61,16 +65,16 @@ void	parse(char **env, char **argv)
 	{
 		path = findpath(env[i], "PATH=");
 		if (path)
-			break;
+			break ;
 	}
 	if (!path)
 		printerror("Path not found", 1);
 	setcmd(argv[2], path);
-	this()->infile = open(argv[1], O_RDONLY);
-	if (this()->infile == -1)
+	(this())->infile = open(argv[1], O_RDONLY);
+	if ((this())->infile == -1)
 		printerror("Invalid infile", 1);
 	setcmd(argv[3], path);
-	this()->outfile = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
-	if (this()->outfile == -1)
+	(this())->outfile = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
+	if ((this())->outfile == -1)
 		printerror("Invalid infile", 1);
 }

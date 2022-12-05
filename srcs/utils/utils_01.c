@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:49:55 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/11/29 13:25:30 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:31:44 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ char	*strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 	int		k;
-
 
 	i = 0;
 	j = -1;
