@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:03:05 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/05 15:00:07 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:04:32 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	setcmd(char *argv, char *path)
 	char	*temp;
 	t_list	*node;
 
+	if (!argv[0])
+		printerror("Empty cmd", 1);
 	cmd = ft_split(argv);
 	if (!cmd)
 		printerror("Malloc error", 1);

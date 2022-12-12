@@ -10,7 +10,7 @@ OBJS = $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
 OBJS_DIR = objs
 
-FLAGS = -g -Wextra -Wall -Werror #-fsanitize=address
+FLAGS = -g -Wextra -Wall -Werror -fsanitize=address
 CC = gcc
 RM = rm -rf
 NAME = pipex

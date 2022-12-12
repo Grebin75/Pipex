@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:49:55 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/05 14:31:44 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:04:02 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char	*strjoin(char *s1, char *s2)
 	j = -1;
 	k = -1;
 	i += len(s1) + len(s2);
+	if (!s1 || !s2)
+		printerror("Command not found", 1);
 	s3 = malloc(sizeof(char) * (i + 2));
 	if (!s3)
 		printerror("Malloc error", 1);
