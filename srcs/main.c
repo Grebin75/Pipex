@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:36:40 by hcoutinh          #+#    #+#             */
-/*   Updated: 2023/01/03 12:09:18 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:15:39 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	forks(char **env, int infile, int outfile)
 	close(infile);
 	rmnode((t_list **)&this()->cmd);
 }
-
 
 int	main(int argc, char **argv, char **env)
 {
