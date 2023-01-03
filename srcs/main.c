@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:36:40 by hcoutinh          #+#    #+#             */
-/*   Updated: 2022/12/12 17:26:00 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:09:18 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	main(int argc, char **argv, char **env)
 		printerror ("Wrong number of arguments", 1);
 	this()->cmd = NULL;
 	parse(env, argv);
-	printlist((t_list *)this()->cmd);
 	if (pipe(pipe_fd) == -1)
 		printerror("Error creating pipe", 1);
 	forks(env, this()->infile, pipe_fd[1]);

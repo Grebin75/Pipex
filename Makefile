@@ -11,7 +11,7 @@ OBJS = $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs
 
 FLAGS =  -Wextra -Wall -Werror #-fsanitize=address -g
-CC = gcc
+CC = cc
 RM = rm -rf
 NAME = pipex
 PRINTF		= printf/libftprintf.a
